@@ -102,7 +102,7 @@ export class GameScene extends Phaser.Scene {
       });
     });
 
-    this.events.on("projectileDeactivated", (proj: Projectile) => {
+    this.events.on("projectileDeactivated", () => {
       console.log("Projectile deactivated");
     }); // Player collects powerup
 
@@ -136,12 +136,12 @@ export class GameScene extends Phaser.Scene {
 
     this.physics.add.overlap(this.player, this.enemies, (player, enemy) => {
       // Call the Player's method to handle contact
-      (player as Player).onEnemyHit(enemy as Enemy); // Optionally apply damage to the enemy
+      (player as Player).onEnemyHit(); // Optionally apply damage to the enemy
 
       (enemy as Enemy).takeDamage(2);
     }); // This is a duplicate overlap check for damage, keeping the original logic for reference
 
-    this.physics.add.overlap(this.player, this.enemies, (player, enemy) => {
+    this.physics.add.overlap(this.player, this.enemies, (player) => {
       // Cast player to Player class
       (player as Player).takeDamage(2);
     });

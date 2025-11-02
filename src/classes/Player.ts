@@ -1,6 +1,6 @@
 // src/classes/Player.ts
 import Phaser from "phaser";
-import type { Enemy } from "./Enemy";
+// import type { Enemy } from "./Enemy";
 import type Powerup from "./PowerUp";
 
 export default class Player extends Phaser.Physics.Arcade.Sprite {
@@ -162,7 +162,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     }
   }
 
-  public onEnemyHit(enemy: Enemy): void {
+  public onEnemyHit(): void {
     this.comboCount++;
     this.comboTimer = this.comboTimeout;
     this.specialCharge = Math.min(100, this.specialCharge + 10);

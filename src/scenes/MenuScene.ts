@@ -369,20 +369,14 @@ export class MenuScene extends Phaser.Scene {
 
     startButton.on("pointerdown", () => {
       // Pass selected theme and player key to GameScene
-      this.cameras.main.fadeOut(
-        500,
-        0,
-        0,
-        0,
-        (camera: Phaser.Cameras.Scene2D.Camera, progress: number) => {
-          if (progress === 1) {
-            this.scene.start("GameScene", {
-              theme: this.selectedTheme,
-              playerKey: this.selectedPlayerKey,
-            });
-          }
+      this.cameras.main.fadeOut(500, 0, 0, 0, (progress: number) => {
+        if (progress === 1) {
+          this.scene.start("GameScene", {
+            theme: this.selectedTheme,
+            playerKey: this.selectedPlayerKey,
+          });
         }
-      );
+      });
     });
   }
 
