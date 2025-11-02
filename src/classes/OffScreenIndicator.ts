@@ -14,7 +14,7 @@ export class OffScreenIndicator extends Phaser.GameObjects.Image {
   private margin: number;
   private color: number;
   private scaleFactor: number;
-  private isVisible: boolean = false;
+  // private isVisible: boolean = false;
 
   constructor(
     scene: Phaser.Scene,

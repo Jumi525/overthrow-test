@@ -259,7 +259,7 @@ export class UIScene extends Phaser.Scene {
   // --- HUD UPDATERS ---
 
   private updateHealth(health: number): void {
-    this.healthBar.update(health);
+    this.healthBar.update();
     this.healthValueText.setText(`${health} HP`);
   }
 

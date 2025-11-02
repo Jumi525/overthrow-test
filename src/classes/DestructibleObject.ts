@@ -1,5 +1,5 @@
 import Phaser from "phaser";
-import type { GameScene } from "../scenes/GameScene";
+// import type { GameScene } from "../scenes/GameScene";
 import { HealthBar } from "./HealthBar";
 
 /**
@@ -122,7 +122,7 @@ export default class DestructibleObject extends Phaser.Physics.Arcade.Sprite {
 
     // --- Power-up spawn chance ---
     if (Phaser.Math.RND.frac() < 0.2) {
-      const gameScene = this.scene as GameScene;
+      // const gameScene = this.scene as GameScene;
       // if (gameScene.spawnPowerup) gameScene.spawnPowerup(this.x, this.y);
     }
 

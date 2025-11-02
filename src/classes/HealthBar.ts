@@ -1,64 +1,3 @@
-// export class HealthBar {
-//   private bar: Phaser.GameObjects.Graphics;
-//   private x: number;
-//   private y: number;
-//   private width: number = 200;
-//   private height: number = 20;
-//   private maxValue: number = 100;
-//   private currentValue: number;
-
-//   constructor(scene: Phaser.Scene, x: number, y: number, maxValue: number) {
-//     this.bar = new Phaser.GameObjects.Graphics(scene);
-//     this.x = x;
-//     this.y = y;
-//     this.maxValue = maxValue;
-//     this.currentValue = maxValue;
-
-//     // Add the bar to the scene
-//     scene.add.existing(this.bar);
-
-//     // Initial draw
-//     this.draw();
-//   }
-
-//   private draw(): void {
-//     this.bar.clear();
-
-//     // 1. Draw Background (Black/Dark Gray Frame)
-//     this.bar.fillStyle(0x111111, 0.8);
-//     this.bar.fillRect(this.x, this.y, this.width, this.height);
-
-//     // 2. Draw Frame Border (Neon Cyan)
-//     this.bar.lineStyle(2, 0x00ffff, 1);
-//     this.bar.strokeRect(
-//       this.x - 1,
-//       this.y - 1,
-//       this.width + 2,
-//       this.height + 2
-//     );
-
-//     // 3. Draw Health Value (The moving bar)
-//     const healthPercent = this.currentValue / this.maxValue;
-//     const healthWidth = Math.floor(this.width * healthPercent);
-
-//     let color = 0x00ff00; // Green
-//     if (healthPercent < 0.5) color = 0xffa500; // Orange
-//     if (healthPercent < 0.25) color = 0xff0000; // Red
-
-//     this.bar.fillStyle(color, 1);
-//     this.bar.fillRect(this.x, this.y, healthWidth, this.height);
-
-//     // 4. Draw Inner Glare/Sophistication (optional)
-//     this.bar.fillStyle(0xffffff, 0.2);
-//     this.bar.fillRect(this.x, this.y, healthWidth, this.height / 3);
-//   }
-
-//   public update(health: number): void {
-//     this.currentValue = health;
-//     this.draw();
-//   }
-// }
-
 import Phaser from "phaser";
 
 /**
@@ -96,11 +35,11 @@ export class HealthBar {
   private flashTween?: Phaser.Tweens.Tween;
   private lowHealthThreshold: number = 0.25; // 25%
   private isFlashing: boolean = false;
-  private fillColor: number;
-  private backgroundColor: number;
+  // private fillColor: number;
+  // private backgroundColor: number;
 
-  private smooth: boolean;
-  private smoothTween?: Phaser.Tweens.Tween;
+  // private smooth: boolean;
+  // private smoothTween?: Phaser.Tweens.Tween;
 
   // constructor(
   //   scene: Phaser.Scene,
@@ -137,12 +76,12 @@ export class HealthBar {
     // Defaults + overrides
     this.width = options?.width ?? 200;
     this.height = options?.height ?? 20;
-    this.fillColor = options?.fillColor ?? 0x00ff00;
-    this.backgroundColor = options?.backgroundColor ?? 0x222222;
+    // this.fillColor = options?.fillColor ?? 0x00ff00;
+    // this.backgroundColor = options?.backgroundColor ?? 0x222222;
     this.lowHealthThreshold = options?.lowHealthFlash ? 0.25 : 0;
     this.followTarget = options?.followTarget;
     this.offsetY = options?.offsetY ?? -40;
-    this.smooth = options?.smooth ?? false;
+    // this.smooth = options?.smooth ?? false;
 
     // Create graphics object
     this.bar = new Phaser.GameObjects.Graphics(scene);

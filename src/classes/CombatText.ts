@@ -12,7 +12,7 @@ export type CombatTextType =
 export class CombatText extends Phaser.GameObjects.Text {
   private floatDistance: number = 60;
   private floatDuration: number = 900;
-  private fadeDuration: number = 700;
+  // private fadeDuration: number = 700;
 
   constructor(
     scene: Phaser.Scene,

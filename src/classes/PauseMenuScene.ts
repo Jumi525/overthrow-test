@@ -1,91 +1,3 @@
-// import Phaser from "phaser";
-
-// export default class PauseMenuScene extends Phaser.Scene {
-//   constructor() {
-//     super("PauseMenuScene");
-//   }
-
-//   create(): void {
-//     const centerX = this.scale.width / 2;
-//     const centerY = this.scale.height / 2;
-
-//     // 1. Create a semi-transparent dark background
-//     const background = this.add
-//       .rectangle(
-//         centerX,
-//         centerY,
-//         this.scale.width,
-//         this.scale.height,
-//         0x000000,
-//         0.7
-//       )
-//       .setDepth(100);
-
-//     // 2. Display Title
-//     this.add
-//       .text(centerX, centerY - 150, "GAME PAUSED", {
-//         fontSize: "64px",
-//         color: "#FFFFFF",
-//         fontStyle: "bold",
-//       })
-//       .setOrigin(0.5)
-//       .setDepth(101);
-
-//     // 3. Create Buttons (Resume, Settings, Main Menu)
-//     this.createButton(centerX, centerY - 50, "RESUME", this.handleResume);
-//     this.createButton(centerX, centerY + 50, "SETTINGS", this.handleSettings);
-//     this.createButton(centerX, centerY + 150, "MAIN MENU", this.handleMainMenu);
-
-//     // Re-enable pause key to unpause from the menu
-//     this.input.keyboard!.on("keydown-P", this.handleResume, this);
-//     this.input.keyboard!.on("keydown-ESC", this.handleResume, this);
-//   }
-
-//   // --- Button Handlers ---
-//   private handleResume(): void {
-//     // Stops this menu scene and resumes the others
-//     this.scene.stop();
-//     this.scene.resume("GameScene");
-//     this.scene.resume("UIScene");
-//   }
-
-//   private handleSettings(): void {
-//     // If you had a SettingsScene
-//     // this.scene.launch("SettingsScene");
-//   }
-
-//   private handleMainMenu(): void {
-//     // Stop all active game scenes and return to the main menu
-//     this.scene.stop("UIScene");
-//     this.scene.stop("GameScene");
-//     this.scene.stop("PauseMenuScene");
-//     this.scene.start("MainMenuScene");
-//   }
-
-//   private createButton(x: number, y: number, text: string, callback: Function) {
-//     const button = this.add
-//       .text(x, y, text, {
-//         fontSize: "32px",
-//         color: "#FFFFFF",
-//         backgroundColor: "#222222",
-//         padding: { x: 30, y: 10 },
-//       })
-//       .setOrigin(0.5)
-//       .setInteractive({ useHandCursor: true })
-//       .setDepth(101);
-
-//     button.on("pointerdown", callback, this);
-//     button.on("pointerover", () =>
-//       button.setBackgroundColor("#00FFFF").setColor("#000000")
-//     );
-//     button.on("pointerout", () =>
-//       button.setBackgroundColor("#222222").setColor("#FFFFFF")
-//     );
-
-//     return button;
-//   }
-// }
-
 import Phaser from "phaser";
 
 interface PauseMenuConfig {
@@ -145,7 +57,7 @@ export default class PauseMenuScene extends Phaser.Scene {
 
     // 2️⃣ Title text
     this.add
-      .text(centerX, centerY - 150, this.config.title, {
+      .text(centerX, centerY - 150, this.config.title as string, {
         fontSize: "64px",
         color: this.config.textColor,
         fontStyle: "bold",
@@ -163,7 +75,7 @@ export default class PauseMenuScene extends Phaser.Scene {
     buttons.forEach((b, i) => {
       this.createButton(
         centerX,
-        centerY - 50 + i * this.config.buttonSpacing ?? 0,
+        centerY - 50 + i * (this.config.buttonSpacing as number),
         b.label,
         b.action
       );

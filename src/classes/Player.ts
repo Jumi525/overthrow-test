@@ -25,12 +25,12 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
 
   private specialKey: Phaser.Input.Keyboard.Key;
   private specialCharge = 0;
-  private specialCost = 50; // --- Combo System ---
+  // private specialCost = 50; // --- Combo System ---
 
   private comboCount = 0;
   private comboTimer = 0;
   private comboTimeout = 3000; // ms
-  private comboMultiplier = 1; // --- Player Stats & Health ---
+  // private comboMultiplier = 1; // --- Player Stats & Health ---
 
   public playerHealth = 100;
   public maxHealth = 100;
@@ -173,7 +173,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
 
   private breakCombo(): void {
     this.comboCount = 0;
-    this.comboMultiplier = 1;
+    // this.comboMultiplier = 1;
   }
 
   private getComboMultiplier(): number {

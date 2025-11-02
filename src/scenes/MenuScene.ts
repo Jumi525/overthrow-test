@@ -60,7 +60,7 @@ export class MenuScene extends Phaser.Scene {
     this.createStartButton();
 
     // Initialize the description text AND the selection border for the default player
-    this.selectPlayer(this.selectedPlayerKey, true);
+    this.selectPlayer(this.selectedPlayerKey);
   }
 
   // --- UI Creation Methods (unchanged methods omitted for brevity) ---
@@ -268,7 +268,7 @@ export class MenuScene extends Phaser.Scene {
     });
   }
 
-  private selectPlayer(playerKey: string, initial: boolean = false) {
+  private selectPlayer(playerKey: string) {
     this.selectedPlayerKey = playerKey;
     const unit = this.playerOptions.find((p) => p.key === playerKey);
 
@@ -300,21 +300,35 @@ export class MenuScene extends Phaser.Scene {
     }
 
     // --- NEW: Selection Border Feedback ---
+    // if (selectedSprite) {
+    //   if (this.playerSelectionBorder) {
+    //     this.playerSelectionBorder.destroy(); // Destroy previous border if it exists
+    //   }
+    //   // Create a new border around the selected sprite
+    //   this.playerSelectionBorder = this.add.rectangle(
+    //     selectedSprite.x,
+    //     selectedSprite.y,
+    //     selectedSprite.displayWidth + 20, // Slightly larger than the sprite
+    //     selectedSprite.displayHeight + 20, // Slightly larger than the sprite
+    //     0, // No fill
+    //     0 // No alpha for fill
+    //   );
+    //   this.playerSelectionBorder.setStrokeStyle(3, this.GLOW_COLOR, 1); // Blue outline, 3px thick
+    // }
     if (selectedSprite) {
-      if (this.playerSelectionBorder) {
-        this.playerSelectionBorder.destroy(); // Destroy previous border if it exists
-      }
-      // Create a new border around the selected sprite
+      const sprite = selectedSprite as Phaser.GameObjects.Sprite;
       this.playerSelectionBorder = this.add.rectangle(
-        selectedSprite.x,
-        selectedSprite.y,
-        selectedSprite.displayWidth + 20, // Slightly larger than the sprite
-        selectedSprite.displayHeight + 20, // Slightly larger than the sprite
-        0, // No fill
-        0 // No alpha for fill
+        sprite.x,
+        sprite.y,
+        sprite.displayWidth + 20,
+        sprite.displayHeight + 20,
+        0x000000,
+        0
       );
+
       this.playerSelectionBorder.setStrokeStyle(3, this.GLOW_COLOR, 1); // Blue outline, 3px thick
     }
+
     // ------------------------------------
   }
 
